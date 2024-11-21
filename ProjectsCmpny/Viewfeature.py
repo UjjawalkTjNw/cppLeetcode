@@ -63,7 +63,7 @@ def viewFeatureTJ1600_R7_0_0_0():
 
     projectKey = "TJ1600"
     jql = "project=" + projectKey + " AND issuetype=Epic"
-    url = "https://any/rest/api/3/search?jql=" + jql
+    url = "url in https" + jql
 
     response = requests.request("GET", url, headers=headers)
 
