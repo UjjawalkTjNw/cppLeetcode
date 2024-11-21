@@ -51,10 +51,8 @@ def viewFeatureTJ1600_R7_0_0_0():
         "Other": 3,
     }
 
-    cred = "Basic " + base64.b64encode(
-        b"emailid:api token"
-    ).decode("utf-8")
-
+    #make cred using basic  plus base6 dot b64encode and add jql to it
+    
     headers = {
         "Accept": "application/json",
         "Content-Type": "application/json",
