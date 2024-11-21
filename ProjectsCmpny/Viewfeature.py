@@ -52,7 +52,7 @@ def viewFeatureTJ1600_R7_0_0_0():
     }
 
     cred = "Basic " + base64.b64encode(
-        b"ppap@tejasnetworks.com:ATATT3xFfGF08uHoe5uha1d4uQMKel0zqa2pL6JDzCkANXOO6PsbEqL5zrLwfvDFHsfR4O0vJUUMJ4700wyVVkl_YZteTZ9ENSyKgAW3r4DRl7K4N4D1mvJ6e-lSVMHvZ6HQKusNQKqOTsUoxI52Topi7EM24CDu3rvgWPiSwHwxgi-0RFNFCSQ=F41D20BD"
+        b"emailid:api token"
     ).decode("utf-8")
 
     headers = {
@@ -63,7 +63,7 @@ def viewFeatureTJ1600_R7_0_0_0():
 
     projectKey = "TJ1600"
     jql = "project=" + projectKey + " AND issuetype=Epic"
-    url = "https://tejasnetworks.atlassian.net/rest/api/3/search?jql=" + jql
+    url = "https://any/rest/api/3/search?jql=" + jql
 
     response = requests.request("GET", url, headers=headers)
 
