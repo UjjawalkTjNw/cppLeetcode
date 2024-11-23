@@ -12,16 +12,21 @@ struct ListNode {
 };
 
 // Function to delete the node given only the pointer to it
+//
 void deleteNode(ListNode* node) {
     if (node == NULL || node->next == NULL) {
         return; // if the node is null or it's the last node
     }
     
-    ListNode* temp = node->next;
+    ListNode* temp = node->next; 
     node->val = temp->val;  // Copy data from next node to this node
     node->next = temp->next; // Link to the node after the next node
     delete temp; // Delete the next node
 }
+//1->2->3->4->5->6->7->8->9->10
+//make fourth element as value 5 : 1->2->3->5->5->6->7->8->9->10 and then delete 5th element
+//i.e make that target element as next element and delete the next elemnt of target
+//1->2->3->5->6->7->8->9->10
 
 int main() {
     // Creating a sample linked list: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10
