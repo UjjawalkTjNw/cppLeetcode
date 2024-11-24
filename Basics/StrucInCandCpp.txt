@@ -1,0 +1,27 @@
+// file: example.c
+#include <stdio.h>
+
+struct Point {
+    int x;
+    int y;
+};
+
+void printPoint(struct Point p) {
+    printf("Point(%d, %d)\n", p.x, p.y);
+}
+
+
+// file: example.cpp
+#include <iostream>
+
+extern "C" {
+    #include "example.c"
+}
+
+int main() {
+    Point p;
+    p.x = 10;
+    p.y = 20;
+    printPoint(p); // Call the C function from C++
+    return 0;
+}
