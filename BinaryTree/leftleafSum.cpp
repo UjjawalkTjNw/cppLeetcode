@@ -1,3 +1,11 @@
+/*Time Complexity: O(N), where N is the number of nodes in the tree. We visit each node once.
+
+Space Complexity: O(H), where H is the height of the tree. 
+This is due to the recursive function calls, which create a recursion stack. 
+In the worst case, the height of a skewed tree can be N, leading to O(N) space complexity. 
+However, in balanced trees, the height is typically log(N), leading to O(log N) space complexity */
+
+
 #include <iostream>
 
 struct TreeNode {
