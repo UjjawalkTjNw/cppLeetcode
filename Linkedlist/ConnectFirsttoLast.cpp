@@ -96,3 +96,11 @@ int main() {
 
     return 0;
 }
+//Every character one node so n character n node so Space complexity  = O(n)
+// head , next ,prev all pointers constant so dont take much space so O(1)
+//Hence, overall SC = O(n)
+
+//Iterate and find middle: O(n)
+//reverse second half O(n/2)
+//connecting then each element O(n)
+// Therefore overall TC = O(n)
