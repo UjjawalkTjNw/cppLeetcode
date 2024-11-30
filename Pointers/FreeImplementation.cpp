@@ -1,75 +1,65 @@
 #include <iostream>
+#include <cstdlib>
+#include <cstring>
 
 struct Block {
     size_t size;
+    bool free;
     Block* next;
 };
 
-Block* free_list_head = nullptr;
+Block* freeList = nullptr;
 
 void* my_malloc(size_t size) {
-    Block* current = free_list_head;
-    Block* prev = nullptr;
-
-    while (current != nullptr) {
-        if (current->size >= size) {
-            // Found a suitable block
-            if (current->size - size >= sizeof(Block)) {
-                // Split the block if there's enough space for a new block header
-                Block* new_block = (Block*)((char*)current + size);
-                new_block->size = current->size - size - sizeof(Block);
-                new_block->next = current->next;
-                current->size = size;
-                current->next = new_block;
-            }
-
-            if (prev   == nullptr) {
-                free_list_head = current->next;
-            } else {
-                prev->next = current->next;
-            }
-
-            return (void*)((char*)current + sizeof(Block));
+    Block* block;
+    if (freeList == nullptr) {
+        block = (Block*)std::malloc(size + sizeof(Block));
+        block->size = size;
+        block->free = false;
+        block->next = nullptr;
+    } else {
+        // Find a free block
+        Block* current = freeList;
+        Block* previous = nullptr;
+        while (current != nullptr && !(current->free && current->size >= size)) {
+            previous = current;
+            current = current->next;
         }
-
-        prev = current;
-        current = current->next;
+        if (current != nullptr) {
+            current->free = false;
+            block = current;
+        } else {
+            block = (Block*)std::malloc(size + sizeof(Block));
+            block->size = size;
+            block->free = false;
+            block->next = nullptr;
+            previous->next = block;
+        }
     }
-
-    // No suitable block found, request more memory from the system
-    // (e.g., using sbrk)
-    // ... (implementation for requesting more memory)
+    return (void*)(block + 1);
 }
 
 void my_free(void* ptr) {
-    // Convert the pointer to a Block*
-    Block* block = (Block*)((char*)ptr - sizeof(Block));
+    if (ptr == nullptr) return;
 
-    // Find the block in the free list
-    Block* prev = nullptr;
-    Block* current = free_list_head;
-    while (current != nullptr && current < block) {
-        prev = current;
+    Block* block = (Block*)ptr - 1;
+    block->free = true;
+
+    // Coalescing adjacent free blocks (optional)
+    Block* current = freeList;
+    while (current != nullptr) {
+        if (current->free && current->next != nullptr && current->next->free) {
+            current->size += current->next->size + sizeof(Block);
+            current->next = current->next->next;
+        }
         current = current->next;
     }
+}
 
-    // Coalesce with previous free block
-    if (prev != nullptr && prev->next == block) {
-        prev->size += block->size;
-        block = prev;
-    }
-
-    // Coalesce with next free block
-    if (block->next != nullptr && (char*)block + block->size == (char*)block->next) {
-        block->size += block->next->size;
-        block->next = block->next->next;
-    }
-
-    // Insert the block into the free list
-    block->next = current;
-    if (prev == nullptr) {
-        free_list_head = block;
-    } else {
-        prev->next = block;
-    }
+int main() {
+    int* ptr = (int*)my_malloc(10 * sizeof(int));
+    std::strcpy((char*)ptr, "Hello");
+    std::cout << (char*)ptr << std::endl;
+    my_free(ptr);
+    return 0;
 }
