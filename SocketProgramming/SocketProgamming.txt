@@ -1,0 +1,19 @@
+Server side:
+------------------
+1. Socket creation
+2. Initialize socket structure with ip address, port no
+3. Bind with address and port no
+4. Connection setup to listen client
+5. Connect and wait for client to accept Connection
+6. Listen client mssg and send response to client
+7. Close the socket
+
+
+
+Client Side:
+---------------
+1. Create Socket
+2. Initialize ip address , port no
+3. connect to server
+4. Send data to server and receive response
+5. Close the socket
