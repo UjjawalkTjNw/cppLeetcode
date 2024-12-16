@@ -30,3 +30,15 @@ int main() {
 
     return 0;
 }
+//take example like this//;
+/*
+123456
+345678
+456789
+123456
+987654
+345678
+
+so here 1234 and 345678 are repeated ones
+
+*/
