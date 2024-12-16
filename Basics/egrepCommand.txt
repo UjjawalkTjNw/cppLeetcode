@@ -1,0 +1,1 @@
+echo "The issues identified were BUG-123, BUG-456, and BUG-789. Additionally, BUG-321 needs attention." | egrep -o 'BUG-[0-9]+'
