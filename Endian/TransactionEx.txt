@@ -1,0 +1,18 @@
+Begin Transaction:
+START TRANSACTION;
+
+Check Product Availability (Read Operation):
+SELECT stock_quantity FROM products WHERE product_id = '123';
+
+Update Inventory (Write Operation):
+UPDATE products SET stock_quantity = stock_quantity - 1 WHERE product_id = '123';
+
+Record the Purchase (Write Operation):
+INSERT INTO orders (order_id, product_id, quantity) VALUES ('456', '123', 1);
+
+Commit the Transaction:
+COMMIT;
+
+If all these steps are executed successfully, the transaction is committed, and the customer’s purchase is recorded.
+ However, if any step fails (e.g., if there’s an issue updating the inventory), the transaction is rolled back to ensure no partial updates are made:
+ROLLBACK;
