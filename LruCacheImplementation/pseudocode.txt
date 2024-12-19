@@ -1,0 +1,80 @@
+deleteNode(Node* node){
+   prevnode = node->prev;
+   afternode = node->next;
+   prevnode->next = afternode;
+   afternode->prev = prevnode;
+}
+
+insertAfterHead(Node* node){
+   currentafterhead = head->next;
+   head->next = node;
+   node->next= currentafterhead;
+   node->prev = head;
+}
+
+class LRUCache {
+      map<int, node*>, capacity, head, tail;
+      //constructor
+      LRUCache(int capacity){
+          capacity = capacity_;
+          map.clear();
+          head->next = tail;
+          tail->next = head;
+}
+
+//get method
+/*
+key as argument
+check exists in map, return -1 if not
+if exist delete from that position and insert after head
+*/
+
+int get(key){
+   if(!map.has(key)) return -1;
+   deleteNode(node);
+   insertAfterHead(node);
+   
+   return node->value;
+}
+
+
+//put method
+/*
+putting something like (5,6) so key value as argument
+//
+//put means update:
+
+
+void put(key , value){
+   #update
+   if(map.has(key)){
+     Node* node = map[key];
+     node->val = value;
+     deleteNode(node);
+     insertAfterhead(node);
+   }
+
+//put means create:
+//check capacity
+//if  == capacity then delete last one from map and also from that position in DLL
+  
+  else{   //continuation of above code
+     #create
+     if(map.size == capacity){
+       Node* node = tail->prev;
+       map.delete(node);
+       deleteNode(node);
+     }
+
+     #create a new node and put /insert it after head
+     Node* node = new Node(key,value);
+     map[key] = node;  //updating new node in map
+     insertAfterhead(node);
+
+}
+     
+
+ 
+
+
+
