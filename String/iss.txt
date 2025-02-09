@@ -1,0 +1,21 @@
+#include <iostream>
+#include <sstream>
+
+int main() {
+    std::string input = "Hello world from C++";
+    std::istringstream iss(input);
+    std::string word;
+
+    while (iss >> word) {  // Extract words one by one
+        std::cout << word << std::endl;
+    }
+
+    return 0;
+}
+
+Output:
+Hello
+world
+from
+C++
+
