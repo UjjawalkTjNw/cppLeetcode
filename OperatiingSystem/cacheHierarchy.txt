@@ -1,0 +1,63 @@
+Cache Hierarchy & L1, L2, L3 Caches - Explained Simply 🚀
+What is Cache Hierarchy?
+Cache Hierarchy refers to the multi-level memory system in a CPU that stores frequently accessed data to improve performance.
+
+Since RAM is too slow compared to the CPU speed, caches provide a faster memory layer between the CPU and RAM, reducing latency.
+
+Hierarchy of Memory (Fastest to Slowest)
+pgsql
+Copy
+Edit
+CPU Registers > L1 Cache > L2 Cache > L3 Cache > RAM > Hard Disk (SSD/HDD)
+✅ Closer to CPU → Faster & Smaller
+❌ Farther from CPU → Slower & Bigger
+
+What Are L1, L2, and L3 Caches?
+Modern processors use a multi-level cache system:
+
+1️⃣ L1 Cache (Level 1)
+🔹 Smallest & Fastest (2–64 KB per core)
+🔹 Located inside the CPU core
+🔹 Stores critical instructions & data
+🔹 Latency: ~1-4 CPU cycles
+
+✅ Super-fast but very limited in size.
+
+2️⃣ L2 Cache (Level 2)
+🔹 Larger but slower than L1 (256 KB – 2 MB per core)
+🔹 Located inside or near the CPU core
+🔹 Stores less frequently used data
+🔹 Latency: ~10 CPU cycles
+
+✅ Acts as a backup for L1 when L1 cache misses occur.
+
+3️⃣ L3 Cache (Level 3)
+🔹 Larger but slower than L2 (4 MB – 128 MB shared across cores)
+🔹 Shared among all CPU cores
+🔹 Latency: ~20–50 CPU cycles
+
+✅ Helps in multi-core communication and reduces main memory (RAM) access.
+
+Comparison of L1, L2, and L3 Cache
+Cache	Size	Speed	Location	Purpose
+L1 Cache	2 KB – 64 KB per core	Fastest (~1-4 cycles)	Inside CPU core	Stores most critical data/instructions
+L2 Cache	256 KB – 2 MB per core	Slower than L1 (~10 cycles)	Inside or near CPU core	Backup for L1, stores recent data
+L3 Cache	4 MB – 128 MB shared	Slowest of all caches (~20-50 cycles)	Shared across cores	Improves multi-core performance
+How Does Cache Improve Performance?
+When the CPU needs data:
+✅ L1 cache hit → Super-fast access (best case)
+✅ L2 cache hit → Fast access (if L1 is missed)
+✅ L3 cache hit → Still better than RAM (if L1 & L2 missed)
+❌ Cache miss → CPU fetches from RAM (slowest case)
+
+Real-Life Analogy 📌
+Imagine a chef in a kitchen:
+
+L1 Cache = Knife in the chef's hand (super close, very fast access)
+L2 Cache = Knife in a nearby drawer (takes a bit longer to grab)
+L3 Cache = Knife in a store room (even farther, but still useful)
+RAM = A supermarket where you buy ingredients (very slow compared to caches)
+Final Takeaway
+L1 → Super-fast but tiny 🔥
+L2 → Larger but slower than L1 ⚡
+L3 → Shared, bigger, and slower than L2 🚀
