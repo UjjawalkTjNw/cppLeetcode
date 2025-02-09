@@ -1,0 +1,6 @@
+MMU (Memory Management Unit) - Simple Brief
+The MMU (Memory Management Unit) is a hardware component in the CPU that:
+✅ Translates virtual addresses to physical addresses using the page table.
+✅ Manages memory protection (prevents illegal access).
+✅ Handles paging & segmentation for efficient memory usage.
+✅ Optimizes caching & TLB (Translation Lookaside Buffer) to speed up address translation.
