@@ -1,0 +1,33 @@
+STL Components
+-------------------------
+1️. Containers → Store data (vector, list, map, etc.)
+2️. Iterators → Navigate through elements (begin(), end())
+3️. Algorithms → Perform operations (sort, find, search, etc.)
+
+
+1. Containers (Data Structures) 📦
+Containers hold collections of objects. Examples:
+
+Sequence Containers: vector, list, deque
+Associative Containers: set, map, multimap
+Unordered Containers: unordered_set, unordered_map
+
+
+
+2. Iterators (Pointers to Elements) 🔄
+Iterators help traverse elements in containers.
+
+begin() → First element
+end() → Past the last element
+++it → Move to the next element
+
+
+
+3. Algorithms (Operations on Data) ⚡
+Algorithms perform operations like sorting, searching, and modifying elements.
+
+sort() → Sort elements
+find() → Search for an element
+reverse() → Reverse order
+count() → Count occurrences
+
