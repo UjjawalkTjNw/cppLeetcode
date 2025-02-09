@@ -1,0 +1,66 @@
+there are two types of templates right ? partial and full
+explain in brief what is diff bw them and also small simple cpp code
+
+ChatGPT said:
+Types of Templates in C++ 🚀
+There are mainly two types of templates in C++:
+
+1️. Full Template (Generic Template)
+------------------------------------------------
+A normal template that works for all types.
+No specialization for any particular type.
+
+Example of Full Template
+
+#include <iostream>
+using namespace std;
+
+template <typename T>  // Full template
+T square(T x) {
+    return x * x;
+}
+
+int main() {
+    cout << square(5) << endl;    // Works for int
+    cout << square(3.5) << endl;  // Works for double
+}
+✅ This works for all data types (int, double, float, etc.).
+---------------------------------------------------------------------------------------------
+2️. Partial Specialization Template
+A template where some parameters are specialized for a specific type.
+Useful when you want special behavior for a particular type while keeping the general template.
+
+Example of Partial Specialization
+
+#include <iostream>
+using namespace std;
+
+// General template
+template <typename T1, typename T2>
+class Test {
+public:
+    void show() { cout << "General Template" << endl; }
+};
+
+// Partial specialization for T1 = int
+template <typename T2>
+class Test<int, T2> {
+public:
+    void show() { cout << "Partial Specialization for int" << endl; }
+};
+
+int main() {
+    Test<double, char> obj1;
+    obj1.show();  // General Template
+
+    Test<int, char> obj2;
+    obj2.show();  // Partial Specialization for int
+}
+✅ The specialized template runs only when T1 = int, otherwise, the general template is used.
+
+🔍 Difference Between Full and Partial Templates
+Feature	                           Full Template	                Partial Specialization
+---------------------------------------------------------------------------------------------------------------------------
+Definition	                           Works for all types	                Specialized for certain types
+Flexibility	                          Completely generic	                Partially specialized
+Use Case	          General-purpose operations	Custom behavior for specific types
