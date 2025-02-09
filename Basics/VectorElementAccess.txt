@@ -1,0 +1,31 @@
+You can access elements in a std::vector in two different ways:
+--------------------------------------------------------------------------------------
+1️. Using Subscript Operator ([])
+Fastest way to access elements.
+No bounds checking → Can lead to undefined behavior if accessing out-of-bounds.
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<int> v = {10, 20, 30};
+    cout << v[1];  // Output: 20 (Direct access)
+}
+✅ Pros: Faster than .at()
+❌ Cons: No safety (No out-of-bounds check)
+=============================
+2️. Using .at() Method
+Performs bounds checking → Throws an exception if index is out-of-bounds.
+Safer but slightly slower than [].
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<int> v = {10, 20, 30};
+    cout << v.at(1);  // Output: 20 (Safe access)
+}
+✅ Pros: Prevents out-of-bounds errors
+❌ Cons: Slightly slower due to safety checks
